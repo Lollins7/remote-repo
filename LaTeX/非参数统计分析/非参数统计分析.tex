@@ -1,0 +1,438 @@
+\documentclass[lang=cn,10pt]{elegantbook}
+\usepackage{subcaption}
+
+
+\newcommand\bv[1]{\boldsymbol{#1}}
+\newcommand\mb[1]{\mathbb{#1}}
+\newcommand\mc[1]{\mathcal{#1}}
+
+% \title{Complex Analysis}
+% \subtitle{Elegant\LaTeX{} 经典之作}
+
+\author{Lollins}
+% \institute{Elegant\LaTeX{} Program}
+\date{\today}
+% \version{4.3}
+% \bioinfo{自定义}{信息}
+
+\extrainfo{改变人生的事情，你必须冒险；
+	意义非凡的事情，大多碰巧发生；
+	不重要的事，才有周全的计划。
+}
+
+\setcounter{tocdepth}{2}
+
+\logo{logo1.jpg}
+\cover{cover.jpg}
+
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+% 修改标题页的橙色带
+% \definecolor{customcolor}{RGB}{32,178,170}
+% \colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\title{非参数统计分析}
+\author{Lollins}
+\date{\today}
+
+\maketitle
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\begin{center}
+    \Huge\textbf{前言}
+\end{center}
+\par
+非参数统计分析笔记，一些图片的代码在code文件夹下。
+
+
+\begin{flushright}
+    \begin{tabular}{c}
+        Lollins \\
+        \today
+    \end{tabular}
+\end{flushright}
+
+\newpage
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\chapter{绪论}
+\section{序}
+\subsection{非参数统计概念及学习意义}
+\subsubsection{意义}
+\subsubsection{概念}
+\begin{itemize}
+    \item \textbf{参数统计方法：}数据样本被视为从分布族的某个参数族抽取出来的总体的代表，
+          未知的仅仅是总体分布具体数值，这样推断问题就转化为分布族的若干未知参数的估计问题，
+          用样本来对这些参数进行估计或进行假设检验，从而得知背后的分布，这类推断方法称为参数
+          统计方法。
+    \item \textbf{非参数统计方法：}不假定总体分布的具体形式，尽量从数据（或样本）本身获得所需要的信息，
+          通过估计而获得分布的结构，并逐步建立对事物的数学描述和统计模型的方法。
+\end{itemize}
+
+\subsection{非参数统计的历史及发展}
+
+\section{引言}
+\subsection{参数统计方法与非参数统计方法的区别}
+\begin{itemize}
+    \item \textbf{参数统计方法：}假定总体的分布形式，既利用样本的数据信息，又利用产生数据总体的信息，是一个有效的数据
+          分析方法，针对性强，但可能出现大的错误。
+    \item \textbf{非参数统计方法：}不假定总体的分布形式，更接近大多数实际情况，故不会出现大的错误。
+\end{itemize}
+
+\subsection{非参数统计方法的特点}
+
+\begin{enumerate}[(1)]
+    \item 有广泛的适用性（广）
+    \item 样本方法是非参数统计的基本方法（样本）
+    \item 计算简单（简）
+    \item 良好的稳定性（稳）
+\end{enumerate}
+
+\chapter{描述性统计}
+\begin{definition}[描述性统计]
+    是在对产生数据的总体的分布不作任何假设的情况下，整理数据、
+    显示数据、分析数据，将数据中有用的信息提取出来的统计方法。
+    本章介绍常用的描述性统计方法：\textbf{表格法、图形法和数值方法}。
+\end{definition}
+
+\section{图表法}
+表格法、图形法描述统计数据主要是频数（率）分布表和直方图。
+
+\section{数值方法}
+数值方法主要是用数值来表示数据的中心位置和离散程度等的方法。
+
+\subsection{表示中心位置的数值}
+我们要求数据的中心位置满足这样一个\textbf{条件：}它到各个数据点的距离的和比较小。
+表示中心位置的数值有平均数、中位数、众数、切尾平均数。
+
+\subsubsection{平均数}
+如果用平方值距离法，则点a到各数据点$x_1,x_2,...,x_n$的距离的和可以用
+$\sum_{i=1}^{n}(x_i-a)^2$来衡量。平均数$\bar{x} = \frac{\sum_{i=1}^{n}x_i}{n}$满足条件：
+\begin{equation}
+    \sum_{i=1}^n\left(x_i-\bar{x}\right)^2=\min_a\sum_{i=1}^n\left(x_i-a\right)^2
+\end{equation}
+上式表示\textbf{平均数这一点到各个数据点的平方值距离和最短}。所以在\textbf{平方值距离方法下},数据中心位置的代表是\textbf{平均数}。
+
+\subsubsection{中位数}
+如果用绝对值距离法，则点a到各数据点$x_1,x_2,...,x_n$的距离的和可以用$\sum_{i=1}^{n}|x_i-a|$
+来衡量，中位数me满足条件：
+\begin{equation}
+    \sum_{i=1}^n|x_i-\max|=\min_a\sum_{i=1}^n|x_i-a|
+\end{equation}
+上式表示\textbf{中位数这一点到各个数据点的绝对值距离和最短}。所以在\textbf{绝对值距离方法下},数据中心位置的代表是\textbf{中位数}。
+
+\textbf{注：}
+\begin{itemize}
+    \item 中位数是非线性规划选址问题的解；
+    \item 中位数不受极大（小）的影响，有时能较好地表示数据的中心位置。
+\end{itemize}
+
+\subsubsection{众数}
+众数：一组数据中出现频数最高的数据。
+
+\textbf{注：}
+\begin{itemize}
+    \item 众数也能描述数据的中心位置。特别是定性数据；
+    \item 一组数据有偏时，若数据右偏(Positively Skewed)，通常有$mo < me < \bar{x}$，
+          若数据左偏(Negatively Skewed)，通常有$\bar{x} < me < mo$，见图\ref{im2_1}。
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.6]{img/2_1.png}
+    \caption{}
+    \label{im2_1}
+\end{figure}
+
+\subsubsection{切尾平均数}
+设$X_{(1)},...,X_{(n)}\text{是来自总体X的简单随机样本}X_{1},...,X_{n}$的次序统计值，称
+\begin{equation}
+    T_{nk}=\frac{1}{n-2k}(x_{(k+1)}+\ldots+x_{(n-k)})
+\end{equation}
+为原样本的的切尾均值。
+
+\subsection{表示离散程度的数值}
+样本方差、标准差、全距（范围）、四分位数间距。
+
+\subsection{标准误}
+\begin{equation}
+    se = \frac{s}{\sqrt{n}},s\text{为样本标准差}
+\end{equation}
+
+\subsection{偏度}
+偏度反映单峰分布对称性，常用$\beta_s$表示总体偏度，
+\begin{equation}
+    \beta_s=E[(\frac{x-\mu}\sigma)^3]=\frac{\mu_3}{\sigma^3},\text{其中}\mu_3=E(x-\mu)^3
+\end{equation}
+
+\textbf{注：}对称分布的偏度$\beta_s=0$；反之不成立，即$\beta_s=0$，不一定是对称分布。
+
+样本偏度用$b_s$表示，
+\begin{equation}
+    b_s=\frac{m_3}{m_2^{\frac{3}{2}}},\text{其中}m_j=\frac{1}{n}\sum_i(x_i-\overline{x})^j
+\end{equation}
+
+\textbf{注：}$b_s>0$时，倾向于认为数据分布右偏；$b_s<0$时，倾向于认为数据分布左偏；
+$b_s\approx 0$时，倾向认为数据分布是对称的。
+
+\subsection{峰度}
+峰度反映分布峰的尖峭程度，常用$\beta_k$表示总体峰度。
+\begin{equation}
+    \beta_k=E[(\frac{x-\mu}{\sigma})^4]=\frac{\mu_4}{\sigma^4}
+\end{equation}
+
+\textbf{注：}若$X\sim N(\mu,\sigma^2)$，则$\beta_k=3$。当$\beta_k>3$时，该分布具有过度的峰度(厚尾分布)，
+当$\beta_k<3$时，该分布具有不足的峰度(薄尾分布)，
+
+样本峰度用$b_k$表示，
+\begin{equation}
+    b_k=\frac{m_4}{(m_2)^2}
+\end{equation}
+
+\chapter{符号检验法}
+在非参数检验中，总体的中心位置的数通常用中位数表示，本章主要讨论中位数、p分位数检验
+问题的符号检验方法，中位数的点估计、区间估计等。
+\section{符号检验}
+\subsection{具体操作方法}
+符号检验问题的原假设和备择假设有三种情况。这三种情况的原假设$H_0$都是$me = me_0$，其中$me_0$是给定的常数，
+备择假设$H_1$分别是$me>me_0,me<me_0$和$me \ne me_0$。
+
+由于$P(X=me)=0$，所以不妨假设样本单元$x_1,x_2,...,x_n$都不等于$me_0$。
+符号检验的检验统计量为
+\begin{equation}
+    S^+ ={}^{\#}G= {}^{\#}\{x_i:x_i-\text{me}_0>0,i=1,2,\cdots,n\},
+\end{equation}
+记号\#表示计数，即$S^+$是集合$G$中元素的个数。$S^+$也可以等价的表示为
+\begin{equation}
+    S^+=\sum_{i=1}^nu_i,u_i=
+    \begin{cases}
+        1, & x_i-me_0>0   \\
+        0, & \text{否则,}
+    \end{cases},{\begin{array}{c}
+                i=1,2,\cdots,n \\
+            \end{array}}
+\end{equation}
+由于在$me = me_0$时，$S^+\sim b(n,\frac12)$。
+
+考虑备择假设$H_1:me>me_0$，我们用$p$值来度量$S^+$是否足够大，让我们拒接原假设。
+$p$值等于二项分布$b(n,\frac12)$的随机变量大于等于$S^+$的概率$P(b(n,\frac12)\geq S^+)$，
+$p$值越小，$S^+$越大。
+
+如果$p$值$\leq \alpha$，则在显著性水平$\alpha$下拒接原假设，认为备择假设$H_1$成立；
+如果$p$值$> \alpha$，则在显著性水平$\alpha$下不拒绝原假设。
+
+\subsection{注意事项}
+在实际问题中，可能出现一些观察值正好等于$me_0$，这时有以下两种处理方法：
+\begin{enumerate}[1、]
+    \item 将这些正好等于$me_0$的观察值去掉，并相应的减少样本容量$n$的值。
+    \item （不常用，不写了）
+\end{enumerate}
+
+\subsection{中位数的估计}
+\subsubsection{点估计}
+\begin{lemma}\label{le3.1}
+    设$x_1,x_2,...,x_n$是来自总体X的样本，$t_p$为总体X的p分位数，$m_{np}$
+    为样本的p分位数，则
+    \begin{equation}
+        P(\lim_{n \to \infty} m_{np} = t_p ) = 1
+    \end{equation}
+\end{lemma}
+根据引理\ref{le3.1}，我们可以结论
+\begin{equation}
+    \hat{t}_p = m_{np} = \begin{cases}
+        x_{([np]+1)},                 & np\text{为非整数} \\
+        \frac12(x_{(np+1)}+x_{(np)}), & np\text{为整数}
+    \end{cases}
+\end{equation}
+
+\subsubsection{区间估计}
+设$x_1,x_2,...,x_n$是来自总体X的样本，$S^+ =
+    {}^{\#}\{x_i:x_i-\text{me}_0>0,i=1,2,\cdots,n\}\sim b(n,\frac12)$
+那么有
+\begin{equation}
+    P(x_{(r)}\leq me \leq x_{(n-r+1)}) =1-P(me < x_{(r)}) -P(me > x_{(n-r+1)})
+    = 1-\sum_{i=0}^{r-1}\binom{n}{i}(\frac{1}{2})^{n-1}
+\end{equation}
+\textbf{注：}层数r越大，置信区间越短，置信水平越低(置信水平为$1-\alpha$)。
+
+\section{符号检验在定性数据分析中的应用}
+根据中心极限定理，当n很大时，且$S^+ \sim b(n,p)$，那么$z=\frac{S^+ - np}{\sqrt{np(1-p)}}\sim N(0,1)$。
+
+对于$x\sim b(n,p)$，做连续性修正：
+\begin{enumerate}[1、]
+    \item $P(X\leq k)\approx\Phi(\frac{k+\frac12-np}{\sqrt{np(1-p)}}),
+              P(X< k)\approx\Phi(\frac{k-\frac12-np}{\sqrt{np(1-p)}})$
+    \item $P(X\geq k)\approx\Phi(\frac{np-k+\frac12}{\sqrt{np(1-p)}}),
+              P(X> k)\approx\Phi(\frac{np-k-\frac12}{\sqrt{np(1-p)}})$
+\end{enumerate}
+
+\section{成对数据的比较问题}
+\begin{definition}[配对数据]
+    两样本间配偶成对，每一对样本除随机给予的不同处理外，其他试验条件尽量一致。
+\end{definition}
+
+\chapter{符号秩和检验法}
+本章主要讨论对称中心的检验及估计问题。
+\section{对称中心为原点的检验问题}
+\subsection{符号秩和检验统计量$W^+$}
+\textbf{符号检验统计量}
+\begin{equation}\label{eq4.1}
+    S^+=\sum_{i=1}^nu_i,u_i=
+    \begin{cases}1,\quad & x_i>0,       \\
+             0,\quad & \text{否则,}
+    \end{cases}i=1,2,\cdots,n.
+\end{equation}
+\textbf{注：}$S^+$仅使用样本数据量的正负信息，未使用样本数据量的大小信息。
+
+\textbf{符号秩和统计量}
+
+设$|x_1|,|x_2|,\cdots,|x_n|$互不相等，由大到小排列为$z_{(1)}<z_{(2)}<\cdots<z_{(n)}$，
+若$|x_i|=z_{(R_i)}$，则称$|x_i|$的秩为$R_i,R_{i}=1,2,\cdots,n$。符号秩和统计量为
+\begin{equation}
+    W^+=\sum_{i=1}^nu_iR_i
+\end{equation}
+此处的$u_i$定义与式\ref{eq4.1}中相同。
+
+\textbf{注：}$W^+$不仅使用样本数据量的符号信息，还是使用了样本数据量的大小信息。
+
+在表\ref{ta4.1}中给出了10个观察值以及它们的10个观察值的符号，绝对值和绝对值的秩。
+\begin{table}[htbp]
+    \centering
+    \caption{10个观察值的符号，绝对值和绝对值的秩}
+    \label{ta4.1}
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        \hline
+        观察值     & -7.6 & -5.5 & 4.3 & 2.7 & -4.8 & 2.1 & -1.2 & -6.6 & -3.3 & -8.5 \\
+        \hline
+        符号       & -    & -    & +   & +   & -    & +   & -    & -    & -    & -    \\
+        \hline
+        绝对值     & 7.6  & 5.5  & 4.3 & 2.7 & 4.8  & 2.1 & 1.2  & 6.6  & 3.3  & 8.5  \\
+        \hline
+        绝对值的秩 & 9    & 7    & 5   & 3   & 6    & 2   & 1    & 8    & 4    & 10   \\
+        \hline
+    \end{tabular}
+\end{table}
+这10个观察值的符号检验统计量$S^+=3$，符号秩和统计量$W^+=5+3+2=10$。
+
+\subsection{符号秩和检验}
+检验统计量：$W^+$，原假设$H_0:\theta = 0$
+
+1、备择假设$H_1:\theta>0$，
+若备择假设$H_1$成立，则$\forall ~a>\theta $，有$P(x>a)>P(x<-a)$。
+如图\ref{im4_1}所示，代码见im4\_1.r。
+
+\begin{figure}[hp]
+    \centering
+    \includegraphics[width = 10cm]{img/im4_1.png}
+    \caption{}
+    \label{im4_1}
+\end{figure}
+
+给定置信水平$\alpha$，拒绝域为$W^+\geq c$，其中
+\begin{equation*}
+    c=\inf\{c^*:P(W^+\geqslant c^+)\leqslant\alpha\}
+\end{equation*}
+
+2、备择假设$H_1:\theta<0$，拒绝域为$W^+\leq d$，其中
+\begin{equation*}
+    d=\sup\{d^{*}:P(\begin{array}{c}W^{+}\leq d^{*}\\\end{array})\leq\alpha\}
+\end{equation*}
+
+3、备择假设$H_1:\neq 0$，拒绝域为$W^+\geq c$或$W^+\leq d$，其中
+\begin{equation*}
+    c=\inf\{c^*:P(W^+\geqslant c^*)\leqslant\alpha/2\},
+    d=\sup\{d^*:P(W^+\leqslant d^*)\leqslant\alpha/2\}.
+\end{equation*}
+
+\section{符号秩和检验统计量$W^+$的性质}
+\subsection{概率分布}
+\begin{proposition}
+    令$S=\sum_{i*1}^niu_i$，则在总体关于原点对称时，$W^+$和$S$同分布，
+    即$W^+\overset{d}{\operatorname*{=}}S$。
+\end{proposition}
+\textbf{注：}总体X的分布关于原点对称时，$u_1,u_2,...,u_n$相互独立同分布，且$P(u_i=0)=P(u_i=1) = \frac12
+    ,i=1,2,..,n $。故$S=\sum_{i=1}^{n}iu_i$为离散型分布，它的取值范围为$0,1,..,\frac{n(n+1)}2$，并且
+\begin{equation}
+    P(S=d)=P(\sum_{i=1}^niu_i=d)=\frac{t_n(d)}{2^n},d=0,1,2,\cdots,\frac{n(n+1)}2
+\end{equation}
+其中$t_n(d)$表示从$1,2,..,n$中任取若干个数，其和恰为d的取法数量(其中$t_n(d)=t_n(\frac{n(n+1)}{2}-d)$)。
+
+\subsection{$W^+$分布的对称性}
+\begin{proposition}
+    在总体的分布关于原点0对称时，$W^+$服从对称分布，对称中心为$0,1,...,\frac{n(n+1)}2$的中点$\frac{n(n+1)}4$
+\end{proposition}
+\textbf{注：}当$n\leq 30$时，可查表得到符号秩和检验临界值$c_\alpha$，使$P(W^+\geq c_\alpha)=\alpha$，
+故当$d=\frac{n(n+1)}2-c_\alpha$时，$P(W^+\leq d_\alpha)=\alpha$。
+
+\section{符号秩和检验统计量$W^+$的渐进正态性}
+\subsection{期望与方差}
+$H_0$成立时，$W^+\overset{d}{\operatorname*{=}}S=\sum_{i=1}^{n}iu_i$，
+$u_i\sim\begin{pmatrix}
+        0       & 1       \\
+        \frac12 & \frac12
+    \end{pmatrix}$。
+再根据$E(u_i)=\frac12,D(u_i)=\frac14$，求得S的期望与方差为
+\begin{equation}
+    \begin{aligned}
+        E(S) & =\frac12\sum_{i=1}^ni=\frac{n\left(n+1\right)}4,                       \\
+        D(S) & =\frac14\sum_{i=1}^ni^2=\frac{n\left(n+1\right)\left(2n+1\right)}{24}.
+    \end{aligned}
+\end{equation}
+由于$W^+$与S有相同的分布，所以我们求得了$W^+$的均值与方差。
+\begin{proposition}
+    在总体分布关于原点0对称时，
+    \begin{equation}
+        \begin{aligned}
+            E(W^+) & =\frac{n\left(n+1\right)}4,                     \\
+            D(W^+) & =\frac{n\left(n+1\right)\left(2n+1\right)}{24}.
+        \end{aligned}
+    \end{equation}
+\end{proposition}
+
+\subsection{$W^+$渐进正态性}
+由liapunov中心极限定理知S渐进服从正态分布，而$W^+$与S有相同的分布，
+所以$W^+$也有渐进正态性。
+
+\begin{proposition}
+    如果总体的分布关于原点0对称，则在样本容量n趋于无穷大时，$W^+$也有渐进正态性，即
+    \begin{equation}
+        \frac{W^+-E\left(W^+\right)}{\sqrt{D\left(W^+\right)}}
+        =\frac{W^+-n\left(n+1\right)/4}{\sqrt{n\left(n+1\right)\left(2n+1\right)/24}}
+        \xrightarrow{L}N(0,1)
+    \end{equation}
+    该渐进正态性简记为
+    \begin{equation}
+        W^+\dot{\sim}N(\frac{n(n+1)}{4},\frac{n(n+1)(2n+1)}{24})
+    \end{equation}
+\end{proposition}
+
+\section{平均秩法}
+\subsection{定义}
+\begin{definition}
+    设$x_1,x_2,...,x_n$为取自总体X的样本，其中相等的$x_i$组成一个结，结中$x_i$的个数称为该结的结长$\tau(\geq 2)$。
+\end{definition}
+秩的定义方式：随机秩，平均秩。
+
+\subsection{性质}
+
+
+
+
+\begin{thebibliography}{3}
+    \bibitem{ref1}孙山泽.非参数统计讲义.北京大学出版社
+    \bibitem{ref2}陈希孺.非参数统计.中国科学技术大学出版社
+    \bibitem{ref3}李裕奇.非参数统计方法.西南交通大学出版社
+\end{thebibliography}
+
+\end{document}
