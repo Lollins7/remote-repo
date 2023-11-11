@@ -1,0 +1,34 @@
+\contentsline {section}{\numberline {一、}问题重述}{3}{section.1}%
+\contentsline {subsection}{\numberline {1\,.\,1}背景资料}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1\,.\,2}需要解决的问题}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {二、}问题分析}{4}{section.2}%
+\contentsline {subsection}{\numberline {2\,.\,1}问题一分析}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2\,.\,2}问题二分析}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2\,.\,3}问题三分析}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2\,.\,4}问题四分析}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {三、}模型的假设}{5}{section.3}%
+\contentsline {section}{\numberline {四、}符号说明}{5}{section.4}%
+\contentsline {section}{\numberline {五、}模型的建立与求解}{5}{section.5}%
+\contentsline {subsection}{\numberline {5\,.\,1}问题一模型的建立及求解}{5}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5\,.\,1\,.\,1}模型的准备：数据可视化与处理}{5}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5\,.\,1\,.\,2}任务标价的影响因素}{8}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5\,.\,1\,.\,3}影响因素的相关性分析}{9}{subsubsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5\,.\,1\,.\,4}多元线性回归模型}{10}{subsubsection.5.1.4}%
+\contentsline {subsubsection}{\numberline {5\,.\,1\,.\,5}任务未完成的原因}{10}{subsubsection.5.1.5}%
+\contentsline {subsection}{\numberline {5\,.\,2}问题二模型的建立及求解}{11}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5\,.\,2\,.\,1}模型的准备}{11}{subsubsection.5.2.1}%
+\contentsline {subsection}{\numberline {5\,.\,3}问题三模型的建立及求解}{15}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5\,.\,3\,.\,1}任务的打包}{15}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5\,.\,3\,.\,2}打包任务的参数修正}{18}{subsubsection.5.3.2}%
+\contentsline {subsection}{\numberline {5\,.\,4}问题四模型的建立及求解}{19}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5\,.\,4\,.\,1}数据可视化与任务打包}{19}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5\,.\,4\,.\,2}BP神经网络模型}{20}{subsubsection.5.4.2}%
+\contentsline {section}{\numberline {六、}模型的评价}{22}{section.6}%
+\contentsline {subsection}{\numberline {6\,.\,1}模型的优点}{22}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6\,.\,2}模型的缺点}{23}{subsection.6.2}%
+\contentsline {section}{\numberline {七、}模型的推广}{23}{section.7}%
+\contentsline {section}{参考文献}{23}{section*.23}%
+\contentsline {section}{附录 \numberline {A}墨卡托投影法}{24}{appendix.a.A}%
+\contentsline {section}{附录 \numberline {B}Kmeans-聚类算法}{24}{appendix.a.B}%
+\contentsline {section}{附录 \numberline {C}层次聚类法}{24}{appendix.a.C}%
+\contentsfinish 

@@ -1,0 +1,14 @@
+\begin{thebibliography}{1}
+
+\bibitem{2018YOLOv3}
+J.~Redmon and A.~Farhadi.
+\newblock Yolov3: An incremental improvement.
+\newblock {\em arXiv e-prints}, 2018.
+
+\bibitem{2017YOLO9000}
+J.~Redmon and A.~Farhadi.
+\newblock Yolo9000: Better, faster, stronger.
+\newblock In {\em IEEE Conference on Computer Vision \& Pattern Recognition},
+  pages 6517--6525, 2017.
+
+\end{thebibliography}

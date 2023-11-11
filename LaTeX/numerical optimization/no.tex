@@ -1,0 +1,123 @@
+\documentclass[12pt, a4paper, oneside]{ctexbook}
+\usepackage{amsmath, amsthm, amssymb, bm, wallpaper}
+\usepackage{graphicx, hyperref, mathrsfs}
+
+\CTEXsetup[format={\Large\bfseries}]{section}
+\linespread{1.5}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem{example}[theorem]{例}
+\newtheorem{proposition}[theorem]{命题}
+
+\newcommand\zm[2]{\begin{proof}[\textbf{#1}]
+    #2
+\end{proof}}
+\newcommand\jie[2]{\begin{proof}[\textbf{#1}]
+    #2
+\end{proof}}
+\newcommand\bv[1]{\boldsymbol{#1}}
+
+% \renewcommand{\qedsymbol}{}
+
+
+\begin{document}
+
+\title{{\Huge{\textbf{Numerical Optimization}}\\——对书中内容的注解}}
+\author{Lollins}
+\date{\today}
+
+\maketitle
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\begin{center}
+    \Huge\textbf{前言}
+\end{center}
+\par
+2023年暑假，我开始阅读数值优化，书中会有一些跳步的证明，我将在这篇注解笔记中对那些证明进行步骤的完善。
+
+\begin{flushright}
+    \begin{tabular}{c}
+        Lollins \\
+        \today
+    \end{tabular}
+\end{flushright}
+
+\newpage
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\chapter{附录A.1}
+
+\section{P609}
+\begin{lemma}[Cauthy-Schwarz Inequality]
+    对于$x$,$y$为任意向量，$A_{n\times n}$为正定矩阵，满足以下的三个不等式：\\
+    \textbf{1}\;$(\bv{x}'\bv{y})^2 \leq  (\bv{x}'\bv{x})(\bv{y}'\bv{y})$;\\
+    \textbf{2}\;$(\bv{x}'\bv{y})^2 \leq  (\bv{x}'A\bv{x})(\bv{y}'A^{-1}\bv{y})$;\\
+    \textbf{3}\;$(\bv{x}'A\bv{y})^2 \leq  (\bv{x}'A\bv{x})(\bv{y}'A\bv{y})$.
+\end{lemma}
+\zm{证明}{\textbf{1.}\;存在标量$a$，向量$\bv{x}+a\bv{y}$，我们有
+    \begin{equation*}
+        \begin{aligned}
+            \|\bv{x}+a\bv{y}\|^2 & = (\bv{x}+a\bv{y})'(\bv{x}+a\bv{y})                  \\
+                                 & = \bv{y}'\bv{y}a^2 + 2\bv{x}'\bv{y}a + \bv{x}'\bv{x} \\
+                                 & \geq 0                                               \\
+        \end{aligned}
+    \end{equation*}
+    \par 即$\Delta \leq 0$，$(2\bv{x}'\bv{y})^2 - 4(\bv{x}'\bv{x})(\bv{y}'\bv{y}) \leq 0$，即证$(\bv{x}'\bv{y})^2 \leq  (\bv{x}'\bv{x})(\bv{y}'\bv{y})$\\
+    \textbf{2.}\;根据谱分解定理，我们有
+    $A^{\frac{1}{2}}=\Sigma_{i=1}^{n}\sqrt{\lambda_{i}}\bv{e}_{i}\bv{e}_{i}^{T}$，$A^{-\frac{1}{2}}=\Sigma_{i=1}^{n}\frac{1}{\sqrt{\lambda_{i}}}\bv{e}_{i}\bv{e}_{i}^{T}$，
+    再根据\textbf{1}中的结论，我们可以得到
+    \begin{equation*}
+        \begin{aligned}
+            [(A^{1/2}\bv{x})'(A^{-1/2}\bv{y})]^2 & \leq (\bv{x}'A^{1/2}A^{1/2}\bv{x})(\bv{y}'A^{-1/2}A^{-1/2}\bv{y}) \\
+                                                 & \leq (\bv{x}'A\bv{x})(\bv{y}'A^{-1}\bv{y})                        \\
+        \end{aligned}
+    \end{equation*}\\
+    \textbf{3.}\;令$\bv{x}'A\bv{y}=(A^{1/2}\bv{x})'(A^{1/2}\bv{y})$，再进行\textbf{2}中的步骤，易得结论
+}
+\par 好像被许凯老师骗了，发现好像不需要用$Cauthy-Schwarz Inequality$，用下面的这个引理就可以完成证明了。
+\begin{lemma}
+    对于实对称矩阵$A$和任意向量$\bv{x}$，我们有$$
+        \lambda_{min} \leq \frac{\bv{x}'A\bv{x}}{\bv{x'x}} \leq \lambda_{max}
+    $$
+\end{lemma}
+
+\zm{证明}{存在正交矩阵$T$，使得
+    \begin{equation*}
+        T'AT = \begin{bmatrix}
+            \lambda_{1} &             &        &             \\
+                        & \lambda_{2} &        &             \\
+                        &             & \ddots &             \\
+                        &             &        & \lambda_{n}
+        \end{bmatrix}=\Lambda
+    \end{equation*}\\
+    \par 令$\bv{x} = T\bv{y}$，则
+    \begin{equation*}
+        \frac{\bv{x}'A\bv{x}}{\bv{x'x}} =\frac{\bv{y}'\Lambda\bv{y}}{\bv{y'y}}
+        = \frac{\lambda_{1}y_{1}^2+\lambda_{2}y_{2}^2+\cdots +\lambda_{n}y_{n}^2}{y_{1}^2+y_{2}^2+\cdots +y_{n}^2}
+    \end{equation*}
+    \par 即证$
+        \lambda_{min} \leq \frac{\bv{x}'A\bv{x}}{\bv{x'x}} \leq \lambda_{max}
+    $
+}
+\par 证明书中的\begin{equation}
+    \sigma_n(A)\|x\|^2=\|x\|^2/\|A^{-1}\|\leq x^TAx\leq\|A\|\|x\|^2=\sigma_1(A)\|x\|^2.
+\end{equation}
+\zm{证明}{\textbf{1.}\;因为$1/\|A^{-1}\|=\lambda_{min}$，$\lambda_{min} \leq \frac{\bv{x}'A\bv{x}}{\bv{x'x}}$，即证\begin{equation*}
+    \|x\|^2/\|A^{-1}\|\leq \bv{x}^TA\bv{x}
+\end{equation*}
+第一个不等式成立\\
+\textbf{2.}\;根据范数的性质，$\|\bv{x}'A\bv{x}\|\leq \|A\|\|x\|^2$
+}
+
+\jie{解}{}
+
+\end{document}
